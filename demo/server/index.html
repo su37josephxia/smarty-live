@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div style="width: 80%; height: 80%; border: solid 1px">
+      <video width="100%" id="vid" autoplay controls>
+        <source src="./v" type="video/ogg" />
+      </video>
+    </div>
+
+    <h1 id="timeDiv" style="color: red"></h1>
+
+    <script>
+      //   const video = document.querySelector("#vid");
+      var video = document.getElementById("vid");
+
+      console.log("v", video);
+      video.addEventListener("ended", function () {
+        //    video_Status.src="img/play.png";
+        console.log("video end...");
+
+
+
+        const img = new Image();
+        img.src = "./next";
+
+        // 重新博凡
+        video.src = './v?123'
+        video.play()
+
+        // 网页刷新
+        // location.reload(true);
+      });
+    </script>
+
+    <script type="text/javascript">
+      //判断时间是否为个位数，如果时间为个位数就在时间之前补上一个“0”
+      function check(val) {
+        if (val < 10) {
+          return "0" + val;
+        } else {
+          return val;
+        }
+      }
+      function displayTime() {
+        //获取div元素
+        var timeDiv = document.getElementById("timeDiv");
+        //获取系统当前的年、月、日、小时、分钟、毫秒
+        var date = new Date();
+        // var year = date.getFullYear();
+        // var month = date.getMonth() + 1;
+        // var day = date.getDate();
+        var hour = date.getHours();
+        var minutes = date.getMinutes();
+        var second = date.getSeconds();
+        var timestr =
+          //   year +
+          //   "年" +
+          //   month +
+          //   "月" +
+          //   day +
+          //   "日  " +
+          check(hour) + ":" + check(minutes) + ":" + check(second);
+        //将系统时间设置到div元素中
+        timeDiv.innerHTML = timestr;
+      }
+      //每隔1秒调用一次displayTime函数
+      function start() {
+        window.setInterval("displayTime()"); //单位是毫秒
+      }
+      start();
+    </script>
+  </body>
+</html>
