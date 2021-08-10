@@ -18,8 +18,8 @@ http
       i++;
     } 
     else if (req.url.indexOf('/v') !== -1) {
-      console.log('播放：',list[i % list.length])
-      var file = path.resolve(__dirname, list[i % list.length]);
+      console.log('播放：',)
+      var file = path.resolve(__dirname, '../../assets/1.mp4');
       fs.stat(file, function (err, stats) {
         if (err) {
           if (err.code === "ENOENT") {
