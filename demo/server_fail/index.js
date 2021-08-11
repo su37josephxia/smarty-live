@@ -14,12 +14,11 @@ http
       // res.end('<video src="/v" autoplay="autoplay"></video>');
       const html = fs.readFileSync("./index.html");
       res.end(html);
-    }else if (req.url === '/next') {
+    } else if (req.url === "/next") {
       i++;
-    } 
-    else if (req.url.indexOf('/v') !== -1) {
-      console.log('播放：',)
-      var file = path.resolve(__dirname, '../../assets/1.mp4');
+    } else if (req.url.indexOf("/v") !== -1) {
+      console.log("播放：");
+      var file = path.resolve(__dirname, "../../assets/1.mp4");
       fs.stat(file, function (err, stats) {
         if (err) {
           if (err.code === "ENOENT") {

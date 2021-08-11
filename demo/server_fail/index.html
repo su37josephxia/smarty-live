@@ -6,31 +6,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <style>
-    body { background-color: rgba(0, 0, 0, 0); margin: 0px auto; overflow: hidden; }
-  </style>
   <body>
     <div style="width: 80%; height: 80%; border: solid 1px">
       <video width="100%" id="vid" autoplay controls>
-        <source src="../assets/1.mp4" type="video/ogg" />
+        <source src="./v" type="video/ogg" />
       </video>
     </div>
 
-    <h1 id="timeDiv" style="color:red"></h1>
+    <h1 id="timeDiv" style="color: red"></h1>
 
     <script>
-      let i = 0
       //   const video = document.querySelector("#vid");
       var video = document.getElementById("vid");
 
       console.log("v", video);
       video.addEventListener("ended", function () {
+        // 视频结尾
+
         //    video_Status.src="img/play.png";
         console.log("video end...");
-        i ++ 
-        // 重新博凡
-        video.src = "../assets/"+ (i % 2 + 1) +".mp4"
-        video.play()
+
+        const img = new Image();
+        img.src = "./next";
+
+        // 重新播放
+        video.src = "./v?123";
+        video.play();
+
+        // 网页刷新
+        // location.reload(true);
       });
     </script>
 
@@ -55,17 +59,13 @@
         var minutes = date.getMinutes();
         var second = date.getSeconds();
         var timestr =
-        //   year +
-        //   "年" +
-        //   month +
-        //   "月" +
-        //   day +
-        //   "日  " +
-          check(hour) +
-          ":" +
-          check(minutes) +
-          ":" +
-          check(second);
+          //   year +
+          //   "年" +
+          //   month +
+          //   "月" +
+          //   day +
+          //   "日  " +
+          check(hour) + ":" + check(minutes) + ":" + check(second);
         //将系统时间设置到div元素中
         timeDiv.innerHTML = timestr;
       }
@@ -73,7 +73,7 @@
       function start() {
         window.setInterval("displayTime()"); //单位是毫秒
       }
-      start()
+      start();
     </script>
   </body>
 </html>
