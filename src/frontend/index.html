@@ -7,19 +7,50 @@
     <script>
       $(function () {
         var socket = io();
-        socket.emit("play", "next");
+        socket.emit("playlist", "next");
 
-        socket.on("play", function (msg) {
-          console.log("play");
+        socket.on("playlist", function (list) {
+          console.log("list", list);
+          playVideo(list);
         });
       });
     </script>
-    <div style="width: 80%; height: 80%; border: solid 1px">
-      <video width="100%" id="vid" autoplay controls>
-        <source type="video/ogg" />
-      </video>
+    <style type="text/css">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body,
+      html {
+        height: 100%;
+      }
+      .top {
+        display: flex;
+        flex-direction: row;
+        background: #ccc;
+      }
+      .left {
+        width: 80%;
+      }
+      .right {
+        width: 20%;
+      }
+    </style>
+    <div class="top">
+      <!-- Video -->
+      <div class="left">
+        <video width="100%" id="vid" autoplay controls>
+          <source type="video/ogg" />
+        </video>
+      </div>
+      <!-- List -->
+      <div class="right">
+        <li>Vue</li>
+        <li>React</li>
+      </div>
     </div>
 
+    <!-- 时间显示 负责刷新obs -->
     <h1 id="timeDiv" style="color: red"></h1>
 
     <script src="./video.js"></script>
